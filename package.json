@@ -1,4 +1,6 @@
 {
+  "name": "my-node-app",
+  "version": "1.0.0",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
@@ -6,5 +8,8 @@
     "googleapis": "^144.0.0",
     "mongoose": "^8.10.2",
     "nodemailer": "^6.10.0"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
