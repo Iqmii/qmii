@@ -31,10 +31,8 @@ if (app.use)  {
 
 
 
-const PORT =  5001;
-app.listen(PORT, () => {
-  console.log(`Сервер запущено на порту ${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 
