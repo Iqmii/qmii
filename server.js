@@ -5,8 +5,8 @@ const app = express();
 const path = require("path");
 const cors = require('cors');
 const mongoose = require('./db'); 
-const authRouter = require('/authRouter');
-const authController = require("/authController");
+const authRouter = require('./authRouter');
+const authController = require("./authController");
 const { auth } = require("googleapis/build/src/apis/abusiveexperiencereport");
 
 app.use(express.urlencoded({ extended: true }));
