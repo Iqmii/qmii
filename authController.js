@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 
-const { User } = require("../db")
+const { User } = require("./db")
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 const { gmail } = require("googleapis/build/src/apis/gmail");
