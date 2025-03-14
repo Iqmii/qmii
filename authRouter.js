@@ -1,13 +1,62 @@
-// routes/authRouter.js
+const express = require("express");
+const bcrypt = require('bcryptjs');
 
-const express = require('express');
-const router = express.Router();
-const controller = require('./authController');
+const app = express();
+const path = require("path");
+const cors = require('cors');
+const mongoose = require('./db');
+const authRouter = require('./authRouter');
+const authController = require("./authController");
+const { auth } = require("googleapis/build/src/apis/abusiveexperiencereport");
 
-// Припустимо, що ваш authController має відповідні методи:
-router.post('/registration', controller.registration);
-router.post('/verificationCode', controller.verificationCode); // або vereficationCode, якщо так називається метод
-router.post('/login', controller.login);
-router.get('/users', controller.getUsers);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); 
+app.use(cors());
+app.use("/auth", authRouter);
+app.use("/auth",authRouter)
+if (app.use)  {
+  console.log("app.use(");
+}
 
-module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+
+
+/*
+const mongoose = require('./db');
+ const checkEmailAndCreate = require('./routes/chekEmail');
+
+app.use(cors());
+
+
+
+
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Додає підтримку JSON
+
+
+app.post("/register", checkEmailAndCreate);
+
+app.listen(4000, () => {
+  console.log("Сервер запущено на порту 4000");
+});
+console.log("jm") */
