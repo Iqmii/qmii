@@ -1,62 +1,17 @@
-const express = require("express");
-const bcrypt = require('bcryptjs');
-
-const app = express();
-const path = require("path");
-const cors = require('cors');
-const mongoose = require('./db');
+const Router = require('express');
+const router = new Router();
+const controller = require('./authController')
 const authRouter = require('./authRouter');
-const authController = require("./authController");
-const { auth } = require("googleapis/build/src/apis/abusiveexperiencereport");
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); 
-app.use(cors());
-app.use("/auth", authRouter);
-app.use("/auth",authRouter)
-if (app.use)  {
-  console.log("app.use(");
+
+router.post('/registration', controller.registration);
+router.post('/verificationCode', controller.vereficationCode);
+router.post('/login', controller.login);
+router.get('/users', controller.getUsers);
+
+if  (router.post) { 
+    console.log("router.post('/registration', controller.registration);");
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
-
-
-/*
-const mongoose = require('./db');
- const checkEmailAndCreate = require('./routes/chekEmail');
-
-app.use(cors());
-
-
-
-
-app.use(express.urlencoded({ extended: true }));
-
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); // Додає підтримку JSON
-
-
-app.post("/register", checkEmailAndCreate);
-
-app.listen(4000, () => {
-  console.log("Сервер запущено на порту 4000");
-});
-console.log("jm") */
+module.exports = router;
